@@ -187,8 +187,9 @@ INSERT DATA {
 
 ## Utilisation du raisonnement
 
-### Supprimer la connexion et la déconnexion d'un utilisateur
+**Objectif de la requête**: Supprimer la connexion et la déconnexion d'un utilisateur
 
+**Requête**
 ```SPARQL
 PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
 PREFIX w3b : <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -197,5 +198,20 @@ DELETE DATA
 {
   ?s w3b db:NetworkObsel
 }
-
 ```
+
+**Résultat**
+`TODO`
+
+### Classer par joueurs les plus actifs
+`TODO`
+
+### Raisonnement en OWL
+`TODO`
+
+
+##  Modification de la base de règles
+### Lite des règles supprimées de la base
+* Foo : Parce que
+
+### Liste des règles ajoutées
