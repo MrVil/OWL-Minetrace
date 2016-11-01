@@ -8,7 +8,7 @@ Au départ, nos obels sont à plat. Nous allons leur donner la structure suivant
 ![schema](OWL_minetrace.png)
 
 
-#### Voici le code pour mettre en place un tel schéma :
+### Voici le code pour mettre en place un tel schéma :
 
 PickupItem and DropItem are ItemObsel
 ```SPARQL
@@ -181,6 +181,21 @@ INSERT DATA {
 
 INSERT DATA {
   db:MinecraftObsel w3:property db:playerName . 
+}
+
+```
+
+## Utilisation du raisonnement
+
+### Supprimer la connexion et la déconnexion d'un utilisateur
+
+```SPARQL
+PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
+PREFIX w3b : <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+DELETE DATA
+{
+  ?s w3b db:NetworkObsel
 }
 
 ```
