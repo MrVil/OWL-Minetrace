@@ -7,10 +7,9 @@ Au départ, nos obels sont à plat. Nous allons leur donner la structure suivant
 
 ![schema](OWL_minetrace.png)
 
-Voici le code pour mettre en place un tel schéma :
+*Voici le code pour mettre en place un tel schéma :*
 
-### PickupItem and DropItem are ItemObsel
-
+PickupItem and DropItem are ItemObsel
 ```SPARQL
 PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
 PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
@@ -23,7 +22,7 @@ INSERT DATA {
   db:DropItem w3:subClassOf db:ItemObsel . }
 ```
 
-### PickupBlock and DropBlock are BlockObsel
+PickupBlock and DropBlock are BlockObsel
 ```SPARQL
 PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
 PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
@@ -38,7 +37,7 @@ INSERT DATA {
 
 ```
 
-### ItemObsel and BlockObsel are ObjectObsel
+ItemObsel and BlockObsel are ObjectObsel
 ```SPARQL
 PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
 PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
@@ -54,7 +53,7 @@ INSERT DATA {
 
 ```
 
-### PlayerJoin, PlayerKick and PlayerQuit are NetworkObsel
+PlayerJoin, PlayerKick and PlayerQuit are NetworkObsel
 ```SPARQL
 PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
 PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
@@ -74,7 +73,7 @@ INSERT DATA {
 }
 ```
 
-### NetworkObsel, PlayerDamage and PlayerDeath are PlayerObsel
+NetworkObsel, PlayerDamage and PlayerDeath are PlayerObsel
 ```SPARQL
 PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
 PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
@@ -94,7 +93,7 @@ INSERT DATA {
 }
 ```
 
-### PlayerObsel, ObjectObsel and Craft are MinecraftObsel
+PlayerObsel, ObjectObsel and Craft are MinecraftObsel
 ```SPARQL
 PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
 PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
@@ -114,7 +113,7 @@ INSERT DATA {
 }
 ```
 
-### MinecraftObsel is ObselType
+MinecraftObsel is ObselType
 ```SPARQL
 PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
 PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
@@ -124,7 +123,7 @@ INSERT DATA {
 }
 ```
 
-### Properties
+Properties
 ```SPARQL
 PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
 PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
