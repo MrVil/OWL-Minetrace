@@ -11,7 +11,7 @@ Voici le code pour mettre en place un tel schéma :
 
 ```SPARQL
 PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1>
-PREFIX w3: <http://www.w3.org/2000/01/>
+PREFIX w3: <http://www.w3.org/2000/01/rdf-schema>
 
 INSERT DATA {
   db:PickupItem w3:subClassOf db:ItemObsel .
