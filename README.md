@@ -7,7 +7,8 @@ Au départ, nos obels sont à plat. Nous allons leur donner la structure suivant
 
 ![schema](OWL_minetrace.png)
 
-*Voici le code pour mettre en place un tel schéma :*
+
+#### Voici le code pour mettre en place un tel schéma :
 
 PickupItem and DropItem are ItemObsel
 ```SPARQL
