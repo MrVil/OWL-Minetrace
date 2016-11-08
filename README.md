@@ -10,10 +10,67 @@
 * [Modification de la base de règles](#3)
   * [Liste des règles supprimées](#3-1)
   * [Liste des règles ajoutées](#3-2)
+* [Annexe - Liste des requêtes](#4)
+  * [Insertion de la structure du graphe](#4-1)
+  * [Insertion des données](#4-2)
+  * [Raisonnement](#4-3)
+  * [Règles](#4-4)
+
 
 ## Conception du graphe de connaissances <a name="1"></a>
 
+Voici la structure que nous allons donner à notre graphe de connaissance :
+
+![schema](OWL_trace.png)
+
+
 ## Utilisation du raisonnement <a name="2"></a>
+
+### RDF <a name="2-1"></a>
+
+Requête : [Raisonnement-rdf](#4-3-1)
+
+#### Objectif de la requête
+
+#### Résultat
+
+### RDF-S <a name="2-2"></a>
+
+Requête : [Raisonnement-rdfs](#4-3-2)
+
+#### Objectif de la requête
+
+#### Résultat
+
+### OWL <a name="2-3"></a>
+
+Requête : [Raisonnement-owl](#4-3-3)
+
+#### Objectif de la requête
+
+#### Résultat
+
+## Modification de la base de règles <a name="3"></a>
+
+### Liste des règles supprimées <a name="3-1"></a>
+
+### Liste des règles ajoutées <a name="3-2"></a>
+
+## Annexe - Liste des requêtes <a name="4"></a>
+
+### Insertion de la structure du graphe <a name="4-1"></a>
+
+### Insertion des données <a name="4-2"></a>
+
+### Raisonnement <a name="4-3"></a>
+
+#### Raisonnement-rdf <a name="4-3-1"></a>
+
+#### Raisonnement-rdfs <a name="4-3-2"></a>
+
+#### Raisonnement-owl <a name="4-3-3"></a>
+
+### Règles <a name="4-4"></a>
 
 Au départ, nos obels sont à plat. Nous allons leur donner la structure suivante :
 
@@ -120,14 +177,14 @@ INSERT DATA {
 ```SPARQL
 SELECT distinct ?instance WHERE
 {
-  ?instance rdf:type db:MinecraftObsel . 
+  ?instance rdf:type db:MinecraftObsel .
 }
 ```
 
 ### Identification des instances des propriétés :
 ```SPARQL
 SELECT distinct ?instance WHERE {
-  ?s rdfs:property ?instance . 
+  ?s rdfs:property ?instance .
 }
 ```
 
@@ -167,13 +224,13 @@ SELECT ?name where
 INSERT
  { ?obsel db:doneBy ?name }
 WHERE
-{ 
+{
    ?obsel db:playerName ?name
 }
 
-DELETE { 
+DELETE {
    ?obsel db:playerName ?name
-} WHERE { 
+} WHERE {
    ?obsel db:playerName ?name
 }
 ```
