@@ -207,9 +207,6 @@ SELECT ?ressource WHERE
 }
 ```
 
-Cette requête permet de voir que les blocks de type LOG sont les plus utilisés (casser ou poser).
-Elle aurait été plus efficace accompagnée d'un Count().
-
 #### Raisonnement-owl <a name="4-3-3"></a> [(up)](#2-3)
 
 Pour le raisonnement en OWL, nous avons besoin de modifier quelque peu le graphe
