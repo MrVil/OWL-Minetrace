@@ -9,177 +9,85 @@ Au départ, nos obels sont à plat. Nous allons leur donner la structure suivant
 
 
 ### Voici le code pour mettre en place un tel schéma :
+On convient d'utiliser les prefixes suivants pour l'ensembles des requêtes :
+```SPARQL
+PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+```
 
 PickupItem and DropItem are ItemObsel
 ```SPARQL
-PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
-PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
-
 INSERT DATA {
-  db:PickupItem w3:subClassOf db:ItemObsel .
+  db:PickupItem rdfs:subClassOf db:ItemObsel .
+  db:DropItem rdfs:subClassOf db:ItemObsel .
 }
-
-INSERT DATA {
-  db:DropItem w3:subClassOf db:ItemObsel . }
 ```
+
 BlockPlace and BlockBreak are BlockObsel
 ```SPARQL
-PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
-PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
-
 INSERT DATA {
-  db:BlockPlace w3:subClassOf db:BlockObsel . 
+  db:BlockPlace rdfs:subClassOf db:BlockObsel .
+  db:BlockBreak rdfs:subClassOf db:BlockObsel .
 }
-
-INSERT DATA {
-  db:BlockBreak w3:subClassOf db:BlockObsel . 
-}
-
 ```
 
 ItemObsel and BlockObsel are ObjectObsel
 ```SPARQL
-PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
-PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
-
 INSERT DATA {
-  db:BlockObsel w3:subClassOf db:ObjectObsel . 
+  db:BlockObsel rdfs:subClassOf db:ObjectObsel .
+  db:ItemObsel rdfs:subClassOf db:ObjectObsel .
 }
-
-
-INSERT DATA {
-  db:ItemObsel w3:subClassOf db:ObjectObsel . 
-}
-
 ```
 
 PlayerJoin, PlayerKick and PlayerQuit are NetworkObsel
 ```SPARQL
-PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
-PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
-
 INSERT DATA {
-  db:PlayerJoin w3:subClassOf db:NetworkObsel . 
-}
-
-
-INSERT DATA {
-  db:PlayerQuit w3:subClassOf db:NetworkObsel . 
-}
-
-
-INSERT DATA {
-  db:PlayerKick w3:subClassOf db:NetworkObsel . 
+  db:PlayerJoin rdfs:subClassOf db:NetworkObsel .
+  db:PlayerQuit rdfs:subClassOf db:NetworkObsel .
+  db:PlayerKick rdfs:subClassOf db:NetworkObsel .
 }
 ```
 
 NetworkObsel, PlayerDamage and PlayerDeath are PlayerObsel
 ```SPARQL
-PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
-PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
-
 INSERT DATA {
-  db:NetworkObsel w3:subClassOf db:PlayerObsel . 
-}
-
-
-INSERT DATA {
-  db:PlayerDamage w3:subClassOf db:PlayerObsel . 
-}
-
-
-INSERT DATA {
-  db:PlayerDeath w3:subClassOf db:PlayerObsel . 
+  db:NetworkObsel rdfs:subClassOf db:PlayerObsel .
+  db:PlayerDamage rdfs:subClassOf db:PlayerObsel .
+  db:PlayerDeath rdfs:subClassOf db:PlayerObsel .
 }
 ```
 
 PlayerObsel, ObjectObsel and Craft are MinecraftObsel
 ```SPARQL
-PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
-PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
-
 INSERT DATA {
-  db:PlayerObsel w3:subClassOf db:MinecraftObsel . 
-}
-
-
-INSERT DATA {
-  db:ObjectObsel w3:subClassOf db:MinecraftObsel . 
-}
-
-
-INSERT DATA {
-  db:Craft w3:subClassOf db:MinecraftObsel . 
+  db:PlayerObsel rdfs:subClassOf db:MinecraftObsel .
+  db:ObjectObsel rdfs:subClassOf db:MinecraftObsel .
+  db:Craft rdfs:subClassOf db:MinecraftObsel .
 }
 ```
 
 MinecraftObsel is ObselType
 ```SPARQL
-PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
-PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
-
 INSERT DATA {
-  db:MinecraftObsel w3:subClassOf db:ObselType . 
+  db:MinecraftObsel rdfs:subClassOf db:ObselType .
 }
 ```
 
 Properties
 ```SPARQL
-PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
-PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
-
 INSERT DATA {
-  db:ObselType w3:property db:end . 
-}
-
-
-INSERT DATA {
-  db:ObselType w3:property db:begin . 
-}
-
-
-INSERT DATA {
-  db:ObselType w3:property db:@id . 
-}
-
-
-INSERT DATA {
-  db:ObselType w3:property db:playerName . 
-}
-
-
-INSERT DATA {
-  db:ObjectObsel w3:property db:data . 
-}
-
-
-INSERT DATA {
-  db:BlockObsel w3:property db:blockName . 
-}
-
-
-INSERT DATA {
-  db:ItemObsel w3:property db:itemName . 
-}
-
-
-INSERT DATA {
-  db:MinecraftObsel w3:property db:x . 
-}
-
-
-INSERT DATA {
-  db:MinecraftObsel w3:property db:y . 
-}
-
-
-INSERT DATA {
-  db:MinecraftObsel w3:property db:z . 
-}
-
-
-INSERT DATA {
-  db:MinecraftObsel w3:property db:playerName . 
+  db:ObselType rdfs:property db:end .
+  db:ObselType rdfs:property db:begin .
+  db:ObselType rdfs:property db:@id .
+  db:ObselType rdfs:property db:playerName .
+  db:ObjectObsel rdfs:property db:data .
+  db:BlockObsel rdfs:property db:blockName .
+  db:ItemObsel rdfs:property db:itemName .
+  db:MinecraftObsel rdfs:property db:x .
+  db:MinecraftObsel rdfs:property db:y .
+  db:MinecraftObsel rdfs:property db:z .
+  db:MinecraftObsel rdfs:property db:playerName .
 }
 
 ```
@@ -190,12 +98,9 @@ INSERT DATA {
 
 **Requête**
 ```SPARQL
-PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
-PREFIX w3b : <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
 DELETE DATA
 {
-  ?s w3b db:NetworkObsel
+  ?s rdf db:NetworkObsel
 }
 ```
 
@@ -204,9 +109,6 @@ DELETE DATA
 
 ### Connaître le bloc le plus utilisé (cassé, posé ...) en utilisant les relations RDF-S définies auparavant :
 ```SPARQL
-PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
-PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
-
 SELECT ?ressource where
 {
   ?s db:blockName ?ressource . ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> db:BlockObsel .
@@ -215,9 +117,6 @@ SELECT ?ressource where
 
 ### Connaître le joueur le plus actif (celui qui a produit le plus d'obsels) en utilisant les relations RDF-S définies auparavant :
 ```SPARQL
-PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
-PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
-
 SELECT ?name where
 {
   ?s db:playerName ?name . ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> db:MinecraftObsel .
