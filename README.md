@@ -83,6 +83,7 @@ On convient d'utiliser les prefixes suivants pour l'ensembles des requêtes :
 PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
 ```
 
 #### PickupItem and DropItem are ItemObsel
@@ -230,12 +231,8 @@ WHERE
    ?obsel db:playerName ?name
 }
 
-<<<<<<< HEAD
-DELETE {
-=======
 DELETE
-{ 
->>>>>>> 6761502b07c3625e43c5ac3069279515fc2dc6f1
+{
    ?obsel db:playerName ?name
 } WHERE {
    ?obsel db:playerName ?name
