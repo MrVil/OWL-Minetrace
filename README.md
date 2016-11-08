@@ -50,6 +50,8 @@ Connaître le bloc le plus utilisé (cassé, posé ...) en utilisant les relatio
 
 #### Résultat
 
+On constate que le bloc le plus utilisé est le bois ("LOG")
+
 ### OWL <a name="2-3"></a>
 
 Requête : [Raisonnement-owl](#4-3-3)
@@ -78,26 +80,7 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
 ### Insertion de la structure du graphe <a name="4-1"></a>
 
-### Insertion des données <a name="4-2"></a>
-
-### Raisonnement <a name="4-3"></a>
-
-#### Raisonnement-rdf <a name="4-3-1"></a>
-
-#### Raisonnement-rdfs <a name="4-3-2"></a>
-
-#### Raisonnement-owl <a name="4-3-3"></a>
-
-### Règles <a name="4-4"></a>
-
-Au départ, nos obels sont à plat. Nous allons leur donner la structure suivante :
-
-![schema](OWL_trace.png)
-
-
-### Voici le code pour mettre en place un tel schéma :
-
-#### PickupItem and DropItem are ItemObsel
+**PickupItem** et **DropItem** sont des **ItemObsel**
 ```SPARQL
 INSERT DATA {
   db:PickupItem rdfs:subClassOf db:ItemObsel .
@@ -105,7 +88,7 @@ INSERT DATA {
 }
 ```
 
-#### BlockPlace and BlockBreak are BlockObsel
+**BlockPlace** et **BlockBreak** sont des **BlockObsel**
 ```SPARQL
 INSERT DATA {
   db:BlockPlace rdfs:subClassOf db:BlockObsel .
@@ -113,7 +96,7 @@ INSERT DATA {
 }
 ```
 
-#### ItemObsel and BlockObsel are ObjectObsel
+**ItemObsel** et **BlockObsel** sont des **ObjectObsel**
 ```SPARQL
 INSERT DATA {
   db:BlockObsel rdfs:subClassOf db:ObjectObsel .
@@ -121,7 +104,7 @@ INSERT DATA {
 }
 ```
 
-#### PlayerJoin, PlayerKick and PlayerQuit are NetworkObsel
+**PlayerJoin**, **PlayerKick** et **PlayerQuit** sont des **NetworkObsel**
 ```SPARQL
 INSERT DATA {
   db:PlayerJoin rdfs:subClassOf db:NetworkObsel .
@@ -130,7 +113,7 @@ INSERT DATA {
 }
 ```
 
-#### NetworkObsel, PlayerDamage and PlayerDeath are PlayerObsel
+**NetworkObsel**, **PlayerDamage** et **PlayerDeath** sont des **PlayerObsel**
 ```SPARQL
 INSERT DATA {
   db:NetworkObsel rdfs:subClassOf db:PlayerObsel .
@@ -139,7 +122,7 @@ INSERT DATA {
 }
 ```
 
-#### PlayerObsel, ObjectObsel and Craft are MinecraftObsel
+**PlayerObsel**, **ObjectObsel** et **Craft** sont des **MinecraftObsel**
 ```SPARQL
 INSERT DATA {
   db:PlayerObsel rdfs:subClassOf db:MinecraftObsel .
@@ -148,14 +131,14 @@ INSERT DATA {
 }
 ```
 
-#### MinecraftObsel is ObselType
+**MinecraftObsel** est un **ObselType**
 ```SPARQL
 INSERT DATA {
   db:MinecraftObsel rdfs:subClassOf db:ObselType .
 }
 ```
 
-#### Properties
+**Properties**
 ```SPARQL
 INSERT DATA {
   db:ObselType rdfs:property db:end .
@@ -177,13 +160,53 @@ INSERT DATA {
 }
 ```
 
-#### Sub properties
+**Sub properties**
 ```SPARQL
 INSERT DATA {
   db:blockName rdfs:subPropertyOf db:objectName .
   db:itemName rdfs:subPropertyOf db:objectName .
 }
 ```
+
+### Insertion des données <a name="4-2"></a>
+
+Pour insérer les données, on importe les fichiers suivants :
+* [obsels0_50](obsels0_50.ttl)
+* [obsels50_100](obsels50_100.ttl)
+
+### Raisonnement <a name="4-3"></a>
+
+#### Raisonnement-rdf <a name="4-3-1"></a>
+
+```SPARQL
+DELETE DATA
+{
+  ?s rdf:type db:PlayerJoin .
+  ?s rdf:type db:PlayerQuit
+}
+```
+
+#### Raisonnement-rdfs <a name="4-3-2"></a>
+
+```SPARQL
+SELECT ?ressource where
+{
+  ?s db:blockName ?ressource . ?s rdf:type db:BlockObsel .
+}
+```
+
+#### Raisonnement-owl <a name="4-3-3"></a>
+
+```SPARQL
+INSERT DATA {
+   db:doneBy owl:inverseOf db:did
+}
+```
+
+### Règles <a name="4-4"></a>
+
+
+### Voici le code pour mettre en place un tel schéma :
 
 ### Identification des instances des classes :
 ```SPARQL
@@ -205,21 +228,10 @@ SELECT distinct ?instance WHERE {
 **Objectif de la requête**: Supprimer la connexion et la déconnexion d'un utilisateur
 
 **Requête**
-```SPARQL
-DELETE DATA
-{
-  ?s rdf:type db:PlayerJoin .
-  ?s rdf:type db:PlayerQuit
-}
-```
+
 
 ### Connaître le bloc le plus utilisé (cassé, posé ...) en utilisant les relations RDF-S définies auparavant :
-```SPARQL
-SELECT ?ressource where
-{
-  ?s db:blockName ?ressource . ?s rdf:type db:BlockObsel .
-}
-```
+
 
 ### Connaître le joueur le plus actif (celui qui a produit le plus d'obsels) en utilisant les relations RDF-S définies auparavant :
 ```SPARQL
@@ -238,6 +250,7 @@ insert data
    "Drazatlam" rdf:type db:Player .
    "gus3000" rdf:type db:Player .
    "Hakkahi" rdf:type db:Player .
+   "Estayr" rdf:type db:Player .
 }
 
 // on triche un peu en insérant des string plutôt que des URIs pour faciliter la tâche, le fonctionnement aurait été semblable autrement.
@@ -277,7 +290,7 @@ insert data
 
 ## Création de la propriété inverse :
 ```SPARQL
-{
+INSERT DATA {
    db:doneBy owl:inverseOf db:did
 }
 ```
@@ -292,9 +305,3 @@ select *
 
 Cela a fonctionné, les propriétés "did" ont été créées.
 
-
-##  Modification de la base de règles
-### Lite des règles supprimées de la base
-* Foo : Parce que
-
-### Liste des règles ajoutées
