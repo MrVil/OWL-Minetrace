@@ -1,8 +1,20 @@
 # Dynamique des connaissances
 *Raisonnement dans le web sémantique*
 
+## Sommaire
+* [Conception du graphe de connaissances](#1)
+* [Utilisation du raisonnement](#2)
+  * [RDF](#2-1)
+  * [RDF-S](#2-2)
+  * [OWL](#2-3)
+* [Modification de la base de règles](#3)
+  * [Liste des règles supprimées](#3-1)
+  * [Liste des règles ajoutées](#3-2)
 
-## Conception du graphe de connaissances
+## Conception du graphe de connaissances <a name="1"></a>
+
+## Utilisation du raisonnement <a name="2"></a>
+
 Au départ, nos obels sont à plat. Nous allons leur donner la structure suivante :
 
 ![schema](OWL_trace.png)
