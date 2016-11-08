@@ -179,17 +179,29 @@ Pour insérer les données, on importe les fichiers suivants :
 #### Raisonnement-rdf <a name="4-3-1"></a> [(up)](#2-1)
 
 ```SPARQL
-DELETE DATA
+DELETE
 {
-  ?s rdf:type db:PlayerJoin .
   ?s rdf:type db:PlayerQuit
+}
+WHERE
+{
+  ?s rdf:type db:PlayerQuit
+}
+
+DELETE
+{
+  ?s rdf:type db:PlayerJoin
+}
+WHERE
+{
+  ?s rdf:type db:PlayerJoin
 }
 ```
 
 #### Raisonnement-rdfs <a name="4-3-2"></a> [(up)](#2-2)
 
 ```SPARQL
-SELECT ?ressource where
+SELECT ?ressource WHERE
 {
   ?s db:blockName ?ressource . ?s rdf:type db:BlockObsel .
 }
@@ -200,7 +212,7 @@ SELECT ?ressource where
 Pour le raisonnement en OWL, nous avons besoin de modifier quelque peu le graphe
 
 ```SPARQL
-insert data
+INSERT DATA
 {
    "Drazatlam" rdf:type db:Player .
    "gus3000" rdf:type db:Player .
@@ -230,10 +242,11 @@ DELETE
 {
    ?obsel db:playerName ?name
 } 
-
-WHERE {
+WHERE
+{
    ?obsel db:playerName ?name
 }
+
 INSERT DATA
 {
    db:Player rdfs:property db:did
@@ -258,6 +271,6 @@ INSERT DATA {
  
  db:ItemDrop owl:disjointWith db:ItemPickup .
  
- db:ItemPickup owl:complementOf ItemObsel . 
+ db:PickupItem owl:complementOf db:DropItem . 
 }
 ```
