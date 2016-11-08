@@ -22,18 +22,17 @@ INSERT DATA {
 INSERT DATA {
   db:DropItem w3:subClassOf db:ItemObsel . }
 ```
-
-PickupBlock and DropBlock are BlockObsel
+BlockPlace and BlockBreak are BlockObsel
 ```SPARQL
 PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
 PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
 
 INSERT DATA {
-  db:DropBlock w3:subClassOf db:BlockObsel . 
+  db:BlockPlace w3:subClassOf db:BlockObsel . 
 }
 
 INSERT DATA {
-  db:PickupBlock w3:subClassOf db:BlockObsel . 
+  db:BlockBreak w3:subClassOf db:BlockObsel . 
 }
 
 ```
@@ -203,8 +202,15 @@ DELETE DATA
 **Résultat**
 `TODO`
 
-### Classer par joueurs les plus actifs
-`TODO`
+### Connaître le bloc le plus utilisé (cassé, posé ...) en utilisant les relations RDF-S définies auparavant :
+PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
+PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?ressource where { ?s db:blockName ?ressource . ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> db:BlockObsel . }
+
+### Connaître le joueur le plus actif en utilisant les relations RDF-S définies auparavant :
+PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
+PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?name where { ?s db:playerName ?name . ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> db:MinecraftObsel . }
 
 ### Raisonnement en OWL
 `TODO`
