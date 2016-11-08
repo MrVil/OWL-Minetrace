@@ -161,7 +161,23 @@ SELECT ?name where
 ```
 
 ### Raisonnement en OWL
-`TODO`
+
+## Altération du graphe :
+```SPARQL
+INSERT
+ { ?obsel db:doneBy ?name }
+WHERE
+{ 
+   ?obsel db:playerName ?name
+}
+
+DELETE { 
+   ?obsel db:playerName ?name
+} WHERE { 
+   ?obsel db:playerName ?name
+}
+```
+ ## Création de la propriété inverse :
 
 
 ##  Modification de la base de règles
