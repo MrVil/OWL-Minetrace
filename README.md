@@ -108,14 +108,14 @@ INSERT DATA {
 ```SPARQL
 SELECT distinct ?instance WHERE
 {
-  ?instance <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> db:MinecraftObsel . 
+  ?instance rdf:type db:MinecraftObsel . 
 }
 ```
 
 ### Identification des instances des propriétés :
 ```SPARQL
 SELECT distinct ?instance WHERE {
-  ?s w3:property ?instance . 
+  ?s rdfs:property ?instance . 
 }
 ```
 
@@ -127,18 +127,16 @@ SELECT distinct ?instance WHERE {
 ```SPARQL
 DELETE DATA
 {
-  ?s rdf db:NetworkObsel
+  ?s rdf:type db:PlayerJoin .
+  ?s rdf:type db:PlayerQuit
 }
 ```
-
-**Résultat**
-`TODO`
 
 ### Connaître le bloc le plus utilisé (cassé, posé ...) en utilisant les relations RDF-S définies auparavant :
 ```SPARQL
 SELECT ?ressource where
 {
-  ?s db:blockName ?ressource . ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> db:BlockObsel .
+  ?s db:blockName ?ressource . ?s rdf:type db:BlockObsel .
 }
 ```
 
@@ -146,7 +144,7 @@ SELECT ?ressource where
 ```SPARQL
 SELECT ?name where
 {
-  ?s db:playerName ?name . ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> db:MinecraftObsel .
+  ?s db:playerName ?name . ?s rdf:type db:MinecraftObsel .
 }
 ```
 
