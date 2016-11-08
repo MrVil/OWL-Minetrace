@@ -206,6 +206,7 @@ DELETE DATA
 ```SPARQL
 PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
 PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
+
 SELECT ?ressource where
 {
   ?s db:blockName ?ressource . ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> db:BlockObsel .
@@ -216,6 +217,7 @@ SELECT ?ressource where
 ```SPARQL
 PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
 PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
+
 SELECT ?name where
 {
   ?s db:playerName ?name . ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> db:MinecraftObsel .
