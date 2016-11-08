@@ -5,7 +5,7 @@
 ## Conception du graphe de connaissances
 Au départ, nos obels sont à plat. Nous allons leur donner la structure suivante :
 
-![schema](OWL_trace.png)
+![schema](OWL.png)
 
 
 ### Voici le code pour mettre en place un tel schéma :
@@ -79,8 +79,7 @@ Properties
 INSERT DATA {
   db:ObselType rdfs:property db:end .
   db:ObselType rdfs:property db:begin .
-  db:ObselType rdfs:property db:@id .
-  db:ObselType rdfs:property db:playerName .
+  db:ObselType rdfs:property db:<https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1@id> .
   db:ObjectObsel rdfs:property db:data .
   db:BlockObsel rdfs:property db:blockName .
   db:ItemObsel rdfs:property db:itemName .
