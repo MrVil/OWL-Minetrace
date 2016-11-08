@@ -5,7 +5,7 @@
 ## Conception du graphe de connaissances
 Au départ, nos obels sont à plat. Nous allons leur donner la structure suivante :
 
-![schema](OWL_minetrace.png)
+![schema](OWL.png)
 
 
 ### Voici le code pour mettre en place un tel schéma :
