@@ -164,6 +164,20 @@ SELECT ?name where
 
 ## Altération du graphe :
 ```SPARQL
+insert data
+{
+   "Drazatlam" rdf:type db:Player .
+   "gus3000" rdf:type db:Player .
+   "Hakkahi" rdf:type db:Player .
+}
+
+// on triche un peu en insérant des string plutôt que des URIs pour faciliter la tâche, le fonctionnement aurait été semblable autrement.
+
+insert data
+{
+   db:MinecraftObsel rdfs:property db:doneBy
+}
+
 INSERT
 {
    ?obsel db:doneBy ?name
@@ -176,7 +190,9 @@ WHERE
 DELETE
 { 
    ?obsel db:playerName ?name
-} WHERE { 
+}
+WHERE
+{ 
    ?obsel db:playerName ?name
 }
 
