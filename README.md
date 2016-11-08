@@ -1,9 +1,11 @@
+<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
 # Dynamique des connaissances
 *Raisonnement dans le web sémantique*
 
 TP réalisé avec le moteur d'inférence [Hylar](https://www.npmjs.com/package/hylar/)
 
-## Sommaire
+## Sommaire <a name="0"></a>
 * [Conception du graphe de connaissances](#1)
 * [Utilisation du raisonnement](#2)
   * [RDF](#2-1)
@@ -19,16 +21,16 @@ TP réalisé avec le moteur d'inférence [Hylar](https://www.npmjs.com/package/h
   * [Règles](#4-4)
 
 
-## Conception du graphe de connaissances <a name="1"></a>
+## Conception du graphe de connaissances <a name="1"></a> [<i class="fa fa-arrow-up"></i>](0)
 
 Voici la structure que nous allons donner à notre graphe de connaissance :
 
 ![schema](OWL_trace.png)
 
 
-## Utilisation du raisonnement <a name="2"></a>
+## Utilisation du raisonnement <a name="2"></a> [<i class="fa fa-arrow-up"></i>](0)
 
-### RDF <a name="2-1"></a>
+### RDF <a name="2-1"></a> [<i class="fa fa-arrow-up"></i>](0)
 
 Requête : [Raisonnement-rdf](#4-3-1)
 
@@ -40,7 +42,7 @@ Supprimer la connexion et la déconnexion d'un utilisateur
 
 Toutes les instances de PlayerJoin et de PlayerQuit sont supprimées.
 
-### RDF-S <a name="2-2"></a>
+### RDF-S <a name="2-2"></a> [<i class="fa fa-arrow-up"></i>](0)
 
 Requête : [Raisonnement-rdfs](#4-3-2)
 
@@ -52,7 +54,7 @@ Connaître le bloc le plus utilisé (cassé, posé ...) en utilisant les relatio
 
 On constate que le bloc le plus utilisé est le bois ("LOG")
 
-### OWL <a name="2-3"></a>
+### OWL <a name="2-3"></a> [<i class="fa fa-arrow-up"></i>](0)
 
 Requête : [Raisonnement-owl](#4-3-3)
 
@@ -62,13 +64,13 @@ Inférer le fait que si un MinecraftObsel *est fait* par un joueur, alors le jou
 
 #### Résultat
 
-## Modification de la base de règles <a name="3"></a>
+## Modification de la base de règles <a name="3"></a> [<i class="fa fa-arrow-up"></i>](0)
 
-### Liste des règles supprimées <a name="3-1"></a>
+### Liste des règles supprimées <a name="3-1"></a> [<i class="fa fa-arrow-up"></i>](0)
 
-### Liste des règles ajoutées <a name="3-2"></a>
+### Liste des règles ajoutées <a name="3-2"></a> [<i class="fa fa-arrow-up"></i>](0)
 
-## Annexe - Liste des requêtes <a name="4"></a>
+## Annexe - Liste des requêtes <a name="4"></a> [<i class="fa fa-arrow-up"></i>](0)
 
 On convient d'utiliser les prefixes suivants pour l'ensembles des requêtes :
 ```SPARQL
@@ -78,7 +80,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 ```
 
-### Insertion de la structure du graphe <a name="4-1"></a>
+### Insertion de la structure du graphe <a name="4-1"></a> [<i class="fa fa-arrow-up"></i>](0)
 
 **PickupItem** et **DropItem** sont des **ItemObsel**
 ```SPARQL
@@ -168,7 +170,7 @@ INSERT DATA {
 }
 ```
 
-### Insertion des données <a name="4-2"></a>
+### Insertion des données <a name="4-2"></a> [<i class="fa fa-arrow-up"></i>](0)
 
 Pour insérer les données, on importe les fichiers suivants :
 * [obsels0_50](obsels0_50.ttl)
@@ -176,7 +178,7 @@ Pour insérer les données, on importe les fichiers suivants :
 
 ### Raisonnement <a name="4-3"></a>
 
-#### Raisonnement-rdf <a name="4-3-1"></a>
+#### Raisonnement-rdf <a name="4-3-1"></a> [<i class="fa fa-arrow-up"></i>](0)
 
 ```SPARQL
 DELETE DATA
@@ -186,7 +188,7 @@ DELETE DATA
 }
 ```
 
-#### Raisonnement-rdfs <a name="4-3-2"></a>
+#### Raisonnement-rdfs <a name="4-3-2"></a> [<i class="fa fa-arrow-up"></i>](0)
 
 ```SPARQL
 SELECT ?ressource where
@@ -195,7 +197,7 @@ SELECT ?ressource where
 }
 ```
 
-#### Raisonnement-owl <a name="4-3-3"></a>
+#### Raisonnement-owl <a name="4-3-3"></a> [<i class="fa fa-arrow-up"></i>](0)
 
 ```SPARQL
 INSERT DATA {
@@ -203,7 +205,7 @@ INSERT DATA {
 }
 ```
 
-### Règles <a name="4-4"></a>
+### Règles <a name="4-4"></a> [<i class="fa fa-arrow-up"></i>](0)
 
 
 ### Voici le code pour mettre en place un tel schéma :
