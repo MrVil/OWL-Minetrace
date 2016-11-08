@@ -92,6 +92,21 @@ INSERT DATA {
 
 ```
 
+### Identification des instances des classes :
+```SPARQL
+SELECT distinct ?instance WHERE
+{
+  ?instance <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> db:MinecraftObsel . 
+}
+```
+
+### Identification des instances des propriétés :
+```SPARQL
+SELECT distinct ?instance WHERE {
+  ?s w3:property ?instance . 
+}
+```
+
 ## Utilisation du raisonnement
 
 **Objectif de la requête**: Supprimer la connexion et la déconnexion d'un utilisateur
