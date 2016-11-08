@@ -203,14 +203,18 @@ DELETE DATA
 `TODO`
 
 ### Connaître le bloc le plus utilisé (cassé, posé ...) en utilisant les relations RDF-S définies auparavant :
+```SPAQL
 PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
 PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT ?ressource where { ?s db:blockName ?ressource . ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> db:BlockObsel . }
+```
 
-### Connaître le joueur le plus actif en utilisant les relations RDF-S définies auparavant :
+### Connaître le joueur le plus actif (celui qui a produit le plus d'obsels) en utilisant les relations RDF-S définies auparavant :
+```SPARQL
 PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
 PREFIX w3: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT ?name where { ?s db:playerName ?name . ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> db:MinecraftObsel . }
+```
 
 ### Raisonnement en OWL
 `TODO`
