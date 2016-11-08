@@ -165,19 +165,43 @@ SELECT ?name where
 ## Altération du graphe :
 ```SPARQL
 INSERT
- { ?obsel db:doneBy ?name }
+{
+   ?obsel db:doneBy ?name
+}
 WHERE
 { 
    ?obsel db:playerName ?name
 }
 
-DELETE { 
+DELETE
+{ 
    ?obsel db:playerName ?name
 } WHERE { 
    ?obsel db:playerName ?name
 }
+
+insert data
+{
+   db:Player rdfs:property db:did
+}
 ```
- ## Création de la propriété inverse :
+
+## Création de la propriété inverse :
+```SPARQL
+{
+   db:doneBy owl:inverseOf db:did
+}
+```
+
+## Vérification :
+```SPARQL
+select *
+{
+   ?s db:did ?o
+}
+```
+
+Cela a fonctionné, les propriétés "did" ont été créées.
 
 
 ##  Modification de la base de règles
