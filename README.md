@@ -1,6 +1,8 @@
 # Dynamique des connaissances
 *Raisonnement dans le web sémantique*
 
+TP réalisé avec le moteur d'inférence [Hylar](https://www.npmjs.com/package/hylar/)
+
 ## Sommaire
 * [Conception du graphe de connaissances](#1)
 * [Utilisation du raisonnement](#2)
@@ -32,13 +34,19 @@ Requête : [Raisonnement-rdf](#4-3-1)
 
 #### Objectif de la requête
 
+Supprimer la connexion et la déconnexion d'un utilisateur
+
 #### Résultat
+
+Toutes les instances de PlayerJoin et de PlayerQuit sont supprimées.
 
 ### RDF-S <a name="2-2"></a>
 
 Requête : [Raisonnement-rdfs](#4-3-2)
 
 #### Objectif de la requête
+
+Connaître le bloc le plus utilisé (cassé, posé ...) en utilisant les relations RDF-S définies auparavant
 
 #### Résultat
 
@@ -47,6 +55,8 @@ Requête : [Raisonnement-rdfs](#4-3-2)
 Requête : [Raisonnement-owl](#4-3-3)
 
 #### Objectif de la requête
+
+Inférer le fait que si un MinecraftObsel *est fait* par un joueur, alors le joueur *fait* ce MinecraftObsel
 
 #### Résultat
 
@@ -57,6 +67,14 @@ Requête : [Raisonnement-owl](#4-3-3)
 ### Liste des règles ajoutées <a name="3-2"></a>
 
 ## Annexe - Liste des requêtes <a name="4"></a>
+
+On convient d'utiliser les prefixes suivants pour l'ensembles des requêtes :
+```SPARQL
+PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+```
 
 ### Insertion de la structure du graphe <a name="4-1"></a>
 
@@ -78,13 +96,6 @@ Au départ, nos obels sont à plat. Nous allons leur donner la structure suivant
 
 
 ### Voici le code pour mettre en place un tel schéma :
-On convient d'utiliser les prefixes suivants pour l'ensembles des requêtes :
-```SPARQL
-PREFIX db: <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-```
 
 #### PickupItem and DropItem are ItemObsel
 ```SPARQL
