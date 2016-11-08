@@ -16,7 +16,7 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 ```
 
-PickupItem and DropItem are ItemObsel
+#### PickupItem and DropItem are ItemObsel
 ```SPARQL
 INSERT DATA {
   db:PickupItem rdfs:subClassOf db:ItemObsel .
@@ -24,7 +24,7 @@ INSERT DATA {
 }
 ```
 
-BlockPlace and BlockBreak are BlockObsel
+#### BlockPlace and BlockBreak are BlockObsel
 ```SPARQL
 INSERT DATA {
   db:BlockPlace rdfs:subClassOf db:BlockObsel .
@@ -32,7 +32,7 @@ INSERT DATA {
 }
 ```
 
-ItemObsel and BlockObsel are ObjectObsel
+#### ItemObsel and BlockObsel are ObjectObsel
 ```SPARQL
 INSERT DATA {
   db:BlockObsel rdfs:subClassOf db:ObjectObsel .
@@ -40,7 +40,7 @@ INSERT DATA {
 }
 ```
 
-PlayerJoin, PlayerKick and PlayerQuit are NetworkObsel
+#### PlayerJoin, PlayerKick and PlayerQuit are NetworkObsel
 ```SPARQL
 INSERT DATA {
   db:PlayerJoin rdfs:subClassOf db:NetworkObsel .
@@ -49,7 +49,7 @@ INSERT DATA {
 }
 ```
 
-NetworkObsel, PlayerDamage and PlayerDeath are PlayerObsel
+#### NetworkObsel, PlayerDamage and PlayerDeath are PlayerObsel
 ```SPARQL
 INSERT DATA {
   db:NetworkObsel rdfs:subClassOf db:PlayerObsel .
@@ -58,7 +58,7 @@ INSERT DATA {
 }
 ```
 
-PlayerObsel, ObjectObsel and Craft are MinecraftObsel
+#### PlayerObsel, ObjectObsel and Craft are MinecraftObsel
 ```SPARQL
 INSERT DATA {
   db:PlayerObsel rdfs:subClassOf db:MinecraftObsel .
@@ -67,28 +67,41 @@ INSERT DATA {
 }
 ```
 
-MinecraftObsel is ObselType
+#### MinecraftObsel is ObselType
 ```SPARQL
 INSERT DATA {
   db:MinecraftObsel rdfs:subClassOf db:ObselType .
 }
 ```
 
-Properties
+#### Properties
 ```SPARQL
 INSERT DATA {
   db:ObselType rdfs:property db:end .
   db:ObselType rdfs:property db:begin .
-  db:ObselType rdfs:property db:<https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1@id> .
+  db:ObselType rdfs:property <https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1@id> .
+  db:Craft rdfs:property db:resultType .
+  db:Craft rdfs:property db:resultData .
+  db:Craft rdfs:property db:numberOfCrafts .
+  db:PlayerDamage rdfs:property db:cause .
+  db:PlayerDamage rdfs:property db:damage .
   db:ObjectObsel rdfs:property db:data .
   db:BlockObsel rdfs:property db:blockName .
   db:ItemObsel rdfs:property db:itemName .
+  db:ItemObsel rdfs:property db:amount .
   db:MinecraftObsel rdfs:property db:x .
   db:MinecraftObsel rdfs:property db:y .
   db:MinecraftObsel rdfs:property db:z .
   db:MinecraftObsel rdfs:property db:playerName .
 }
+```
 
+#### Sub properties
+```SPARQL
+INSERT DATA {
+  db:blockName rdfs:subPropertyOf db:objectName .
+  db:itemName rdfs:subPropertyOf db:objectName .
+}
 ```
 
 ### Identification des instances des classes :
