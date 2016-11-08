@@ -12,8 +12,6 @@ TP réalisé avec le moteur d'inférence [Hylar](https://www.npmjs.com/package/h
   * [RDF-S](#2-2)
   * [OWL](#2-3)
 * [Modification de la base de règles](#3)
-  * [Liste des règles supprimées](#3-1)
-  * [Liste des règles ajoutées](#3-2)
 * [Annexe - Liste des requêtes](#4)
   * [Insertion de la structure du graphe](#4-1)
   * [Insertion des données](#4-2)
@@ -66,9 +64,9 @@ Inférer le fait que si un MinecraftObsel *est fait* par un joueur, alors le jou
 
 ## Modification de la base de règles <a name="3"></a>
 
-### Liste des règles supprimées <a name="3-1"></a>
+Nous allons modifier la base de règle afin de préciser qu'un *Item* ne peut être que *Drop* ou *Pickup*.
 
-### Liste des règles ajoutées <a name="3-2"></a>
+Pour cela, nous allons définir que *ItemPickup* et *ItemDrop* sont deux classes distinctes. Ensuite, nous allons définir que *ItemPickup* est le complet de *ItemObsel*
 
 ## Annexe - Liste des requêtes <a name="4"></a> 
 
@@ -199,53 +197,8 @@ SELECT ?ressource where
 
 #### Raisonnement-owl <a name="4-3-3"></a> [(up)](#2-3)
 
-```SPARQL
-INSERT DATA {
-   db:doneBy owl:inverseOf db:did
-}
-```
+Pour le raisonnement en OWL, nous avons besoin de modifier quelque peu le graphe
 
-### Règles <a name="4-4"></a>
-
-
-### Voici le code pour mettre en place un tel schéma :
-
-### Identification des instances des classes :
-```SPARQL
-SELECT distinct ?instance WHERE
-{
-  ?instance rdf:type db:MinecraftObsel .
-}
-```
-
-### Identification des instances des propriétés :
-```SPARQL
-SELECT distinct ?instance WHERE {
-  ?s rdfs:property ?instance .
-}
-```
-
-## Utilisation du raisonnement
-
-**Objectif de la requête**: Supprimer la connexion et la déconnexion d'un utilisateur
-
-**Requête**
-
-
-### Connaître le bloc le plus utilisé (cassé, posé ...) en utilisant les relations RDF-S définies auparavant :
-
-
-### Connaître le joueur le plus actif (celui qui a produit le plus d'obsels) en utilisant les relations RDF-S définies auparavant :
-```SPARQL
-SELECT ?name where
-{
-  ?s db:playerName ?name . ?s rdf:type db:MinecraftObsel .
-}
-```
-
-### Raisonnement en OWL
-
-## Altération du graphe :
 ```SPARQL
 insert data
 {
@@ -254,15 +207,17 @@ insert data
    "Hakkahi" rdf:type db:Player .
    "Estayr" rdf:type db:Player .
 }
+```
 
-// on triche un peu en insérant des string plutôt que des URIs pour faciliter la tâche, le fonctionnement aurait été semblable autrement.
+On triche en insérant des *string* plutôt que des *URIs* pour faciliter la tâche, le fonctionnement aurait été semblable autrement.
 
-insert data
+```SPARQL
+INSERT DATA
 {
    db:MinecraftObsel rdfs:property db:doneBy
 }
 
-INSERT
+INSERT DATA
 {
    ?obsel db:doneBy ?name
 }
@@ -274,36 +229,35 @@ WHERE
 DELETE
 {
    ?obsel db:playerName ?name
-<<<<<<< HEAD
-} WHERE {
-=======
-}
-WHERE
-{ 
->>>>>>> 75dedd3fb12c5f9b621d252f8c98c46f50e6c794
+} 
+
+WHERE {
    ?obsel db:playerName ?name
 }
-
-insert data
+INSERT DATA
 {
    db:Player rdfs:property db:did
 }
 ```
 
-## Création de la propriété inverse :
+Voici finalement la requête
+
 ```SPARQL
 INSERT DATA {
    db:doneBy owl:inverseOf db:did
 }
 ```
 
-## Vérification :
+### Règles <a name="4-4"></a>
+
 ```SPARQL
-select *
-{
-   ?s db:did ?o
+INSERT DATA {
+ db:ItemObsel rdf:type owl:Class .
+ db:ItemDrop rdf:type owl:Class .
+ db:ItemPickup rdf:type owl:Class .
+ 
+ db:ItemDrop owl:disjointWith db:ItemPickup .
+ 
+ db:ItemPickup owl:complementOf ItemObsel . 
 }
 ```
-
-Cela a fonctionné, les propriétés "did" ont été créées.
-
