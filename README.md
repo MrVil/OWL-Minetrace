@@ -261,8 +261,7 @@ INSERT DATA {
 }
 ```
 
-### Règles <a name="4-4"></a>
-
+D'autres raisonnements owl : (disjonction et complément)
 ```SPARQL
 INSERT DATA {
  db:ItemObsel rdf:type owl:Class .
@@ -274,3 +273,6 @@ INSERT DATA {
  db:PickupItem owl:complementOf db:DropItem . 
 }
 ```
+
+### Règles <a name="4-4"></a>
+`TODO`
