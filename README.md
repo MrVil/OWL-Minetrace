@@ -172,7 +172,7 @@ INSERT DATA {
 
 Pour insérer les données, on importe les fichiers suivants :
 * [obsels0_50](obsels0_50.ttl)
-* [obsels50_100](obsels50_100.ttl)
+* [obsels51_100](obsels51_100.ttl)
 
 ### Raisonnement <a name="4-3"></a>
 
