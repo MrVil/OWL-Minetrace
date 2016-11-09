@@ -277,8 +277,8 @@ INSERT DATA {
 }
 ```
 
-Nous avons pensé à entrer cette règle dans HyLAR et insérer un obsel appartenant à DropItem et PickupItem mais ne savons pas comment vérifier l'intégrité du graphe et le respect des règles ...
-
+Nous avons insérer cette règle grâce à l'interface d'Hylar :
 ```SPARQL
 (?s http://www.w3.org/1999/02/22-rdf-syntax-ns#type https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#DropItem) ^ (?s http://www.w3.org/1999/02/22-rdf-syntax-ns#type https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#PickupItem) -> FALSE
 ```
+Ayant des difficultés à comprendre cet outil, nous n'avons malheureusement pas pu vérifier son bon marchement.
