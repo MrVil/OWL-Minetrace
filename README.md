@@ -268,11 +268,17 @@ Insertions de règles OWL : (disjonction et complément)
 ```SPARQL
 INSERT DATA {
  db:ItemObsel rdf:type owl:Class .
- db:ItemDrop rdf:type owl:Class .
- db:ItemPickup rdf:type owl:Class .
+ db:DropItem rdf:type owl:Class .
+ db:PickupItem rdf:type owl:Class .
  
- db:ItemDrop owl:disjointWith db:ItemPickup .
+ db:DropItem owl:disjointWith db:PickupItem .
  
- db:PickupItem owl:complementOf db:DropItem . 
+ db:DropItem owl:complementOf db:PickupItem . 
 }
+```
+
+Nous avons pensé à entrer cette règle dans HyLAR et insérer un obsel appartenant à DropItem et PickupItem mais ne savons pas comment vérifier l'intégrité du graphe et le respect des règles ...
+
+```SPARQL
+(?s http://www.w3.org/1999/02/22-rdf-syntax-ns#type https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#DropItem) ^ (?s http://www.w3.org/1999/02/22-rdf-syntax-ns#type https://liris-ktbs01.insa-lyon.fr:8000/public/master-ia-2016/zguyl/model1#PickupItem) -> FALSE
 ```
